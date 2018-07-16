@@ -1,0 +1,35 @@
+<ion-header>
+    <ion-navbar color="dark">
+        <ion-title>
+            Telstock App
+        </ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding class="card-background-page">
+    <ion-list>
+        <ion-item-sliding *ngFor="let img of listaImagenes; let i = index">
+            <ion-item>
+                <ion-card>
+                    <img [src]="img.thumbnailUrl" />
+                    <div class="card-title"> {{img.title}} </div>
+                    <div class="card-subtitle"> {{img.id}} </div>
+                </ion-card>
+            </ion-item>
+            <ion-item-options side="right">
+                <button ion-button color="danger" (click)="borrarImg(img.id,i);">
+                  <ion-icon name="md-trash"></ion-icon>
+                  Eliminar
+                </button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
+
+    <!-- <ion-infinite-scroll (ionInfinite)="$event.waitFor(doInfinite())">
+            <ion-infinite-scroll-content></ion-infinite-scroll-content>
+        </ion-infinite-scroll> -->
+
+    <ion-fab right bottom>
+        <button ion-fab color="danger" (click)="addImg()"><ion-icon name="add"></ion-icon></button>
+    </ion-fab>
+</ion-content>
